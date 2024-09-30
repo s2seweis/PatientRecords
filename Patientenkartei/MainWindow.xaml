@@ -21,8 +21,8 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBox AcceptsReturn="true" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="TextBox"/>
-        <TextBox Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" Height="50" Width="auto" Margin="15,0,15,0"/>
-        <Button Grid.Row="3" Grid.Column="3" Content="Erstellen" Width="150" Height="50"/>
+        <TextBox x:Name="textBoxContent" AcceptsReturn="true" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="Inhalt hier eintragen"/>
+        <Button x:Name="btnCreate" Grid.Row="3" Grid.Column="3" Content="Erstellen" Width="150" Height="50" Click="btnCreate_Click"/>
+        <TextBox x:Name="textBoxFileName" Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Text="Dateiname" Height="50" Width="auto" Margin="15,0,15,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
