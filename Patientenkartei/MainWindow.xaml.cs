@@ -9,6 +9,12 @@ namespace Patientenkartei
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Großschreibung zeigt an das es eine Konsatnte ist
+        // Statische Konstante, kann in Laufzeit nicht verändert werden
+        // Konstante definiert im öffentlichen Scope der Klasse
+        public const string DIR_PATH = @"C:\Users\SWE\Desktop\test\";
+        // Test folder is not build automatically
+        public const string FILE_EXT = ".txt";
         public MainWindow()
         {
             InitializeComponent();
@@ -19,9 +25,8 @@ namespace Patientenkartei
         {
             string content = textBoxContent.Text;
             string filename = textBoxFileName.Text;
-            string dirPath = @"Users\SWE\Desktop\test\";
 
-            using (FileStream fs = File.Create(filename + ".txt"))
+            using (FileStream fs = File.Create(DIR_PATH + filename + FILE_EXT))
             {
 
                 byte[] contentConvertedToBytes = Encoding.ASCII.GetBytes(content);
@@ -29,7 +34,30 @@ namespace Patientenkartei
 
             }
 
-            MessageBox.Show("Date wurde angelegt.");
+            MessageBox.Show("Datei wurde angelegt.");
         }
+
+
+        // #######################################################
+
+
+        private void btnOpen_Click(object sender, RoutedEventArgs e)
+        {
+            string filename = textBoxFileName.Text;
+
+            using (FileStream fs = File.OpenRead(DIR_PATH + filename + FILE_EXT))
+            {
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    string content = sr.ReadToEnd();
+                    textBoxContent.Text = content;
+                }
+            }
+        }
+
+
+        // #######################################################
+
+
     }
 }
